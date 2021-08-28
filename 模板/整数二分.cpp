@@ -7,7 +7,7 @@ bool check2(int mid, int target){
     return mid <= target;
 }
 
-//区间划分[l, mid]和[mid + 1, r]
+//区间划分[l, mid]和[mid + 1, r]，返回target最左位置
 int binarySearch1(int s[], int l, int r, int target){
     while(l < r){
         int mid = l + r >> 1;
@@ -17,7 +17,7 @@ int binarySearch1(int s[], int l, int r, int target){
     return s[l] == target ? l : -1;;
 }
 
-//区间划分[l, mid - 1]和[mid, r]
+//区间划分[l, mid - 1]和[mid, r]，返回target最右位置
 int binarySearch2(int s[], int l, int r, int target){
     while(l < r){
         int mid = l + r + 1 >> 1;

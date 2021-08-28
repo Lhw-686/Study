@@ -10,7 +10,6 @@ typedef struct BigInt{
         int i = 0, j = 0, t = 0, offset = 0;
         while(i < digit.size() && j < b.digit.size()){
             t = digit[i++] - offset - b.digit[j++];
-            //t可能小于0
             res.digit.push_back((t + 10) % 10);
             offset = t < 0 ? 1 : 0;
         }
@@ -19,11 +18,10 @@ typedef struct BigInt{
             res.digit.push_back((t + 10) % 10);
             offset = t < 0 ? 1 : 0;
         }
-        //处理前导0
-        for(int i = res.digit.size() - 1; i > 0; i--){
-            if(res.digit[i] != 0) break;
+        while(res.digit.back() == 0){
             res.digit.pop_back();
         }
+        if(res.digit.size() == 0) res.digit.push_back(0);
         return res;
     };
     bool operator > (const BigInt& b) const{
